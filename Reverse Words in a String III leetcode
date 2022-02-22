@@ -1,0 +1,41 @@
+class Solution {
+    
+    
+    //we have reversed elements of string array strArray one by one using reverseEle method
+    
+      public String reverseEle(String str)
+    {
+    
+        char ch[]=str.toCharArray(); //convert string to char array
+        int i=0;
+        int j=str.length()-1;
+        while(i<j)
+        {
+            char temp=ch[i];
+            ch[i++]=ch[j];        //this code reverse the char array elements
+            ch[j--]=temp;
+        }
+        String res = String.copyValueOf(ch); //convert char array to string
+        return res;
+    }
+    
+   
+    public String reverseWords(String s) {
+        
+        
+        String strArray[] = s.split(" ");
+        
+        for(int i=0;i<strArray.length;i++)
+        strArray[i]=reverseEle(strArray[i]);     //reversed elements of string array one by one
+        
+        String result="";
+        
+        for(int i=0;i<strArray.length-1;i++)
+            result+=strArray[i]+" ";  //converted string array to string adding space at end
+        
+        result+=strArray[strArray.length-1]; //adding last element without space
+        
+        return result;
+    }
+   
+}
